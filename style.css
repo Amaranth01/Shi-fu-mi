@@ -8,6 +8,11 @@ html {
     font-size: 65.5%;
 }
 
+h1 {
+    color: #e0a87e;
+    margin-top: 1rem;
+}
+
 #content {
     display: flex;
     flex-wrap: wrap;
@@ -17,10 +22,11 @@ html {
 
 h2 {
     text-align: center;
+    margin-bottom: 1rem;
 }
 
 #rules {
-    border: black 2px solid;
+    border: #e0a87e 2px solid;
     margin-top: 2rem;
     padding: 0.5rem;
 }
@@ -28,8 +34,23 @@ h2 {
 #score {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+    font-size: 2rem;
+}
+
+#scoreplayer {
+    background-color: #e0a87e;
+}
+
+#player-score, #score-ordi {
+    text-align: center;
+}
+
+#scoreComputer {
+    background-color: #e0a87e;
 }
 
 img {
@@ -39,9 +60,47 @@ img {
 #img {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
+#feuille, #pierre, #ciseau {
+    margin-top: 3rem;
+    border: #e0a87e solid 2px;
+}
+
+#container {
+    margin-top: 2rem;
+    font-size: 2rem;
+    background-color: #e0a87e;
+    width: 95%;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+#reset {
+    font-size: 1.5rem;
+    background-color: white;
+    border: #e0a87e 2px solid;
+}
+
+@media screen and (max-width: 420px) {
+
+    #score {
+        font-size: 1.2rem;
+    }
 
 
+    #reset {
+        font-size: 1.2rem;
+    }
+
+    #container {
+        font-size: 1.2rem;
+    }
+
+    img {
+        width: 8rem;
+    }
+}

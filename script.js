@@ -2,9 +2,11 @@ let ciseau = document.querySelector('#ciseau');
 let feuille = document.querySelector('#feuille');
 let pierre = document.querySelector('#pierre');
 let container = document.getElementById('container');
-let playerScore = document.querySelector('#player-score');
-let computerScore = document.querySelector('#score-ordi');
-let button = document.querySelector('#button');
+let playerScoreContainer = document.querySelector('#player-score');
+let computerScoreContainer = document.querySelector('#score-ordi');
+let reset = document.querySelector('#button');
+let computerChoice;
+let playerChoice;
 
 
 // Choice of bot for the play
@@ -15,65 +17,80 @@ function botGame () {
     ciseau = 2;
     //computer choose rock
     if (choixOrdi === 0) {
-        botGame = pierre;
+        computerChoice = "pierre";
         console.log('p');
     }
     else if (choixOrdi === 1) {
         //computer choose paper
-        botGame = feuille;
+        computerChoice = "feuille";
         console.log('f')
     }
     else if (choixOrdi === 2) {
         //computer choose chisel
-        botGame = ciseau;
+        computerChoice = "ciseau";
         console.log('c')
     }
 }
 
-//event for the game
-pierre.addEventListener('click', botGame);
-feuille.addEventListener('click', botGame);
-ciseau.addEventListener('click', botGame);
-
 // Var for the score
-playerScore = 0;
-computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
 // Defines the winner
-function winner (event, botChoice) {
+function winner (player, botChoice) {
     //choice of player rock
-    if (event === pierre) {
-        if (botChoice === 2) {
+    if (player === "pierre") {
+        if (botChoice === "ciseau") {
             playerScore++
-            container.innerHTML +='Vous gagnez cette manche !';
-        }
-        else {
+            container.innerHTML = 'Vous gagnez cette manche !';
+        } else if (botChoice === "feuille") {
             computerScore++
-            container.innerHTML += "L'ordinateur gagne cette manche !";
+            container.innerHTML = "L'ordinateur gagne cette manche !";
+        } else {
+            container.innerHTML = "Egalité !"
         }
     }
     //choice of player paper
-    if (event === feuille) {
-        if (botChoice === 0) {
+    if (player === "feuille") {
+        if (botChoice === "pierre") {
             playerScore++;
-            container.innerHTML +='Vous gagnez cette manche !';
-        }
-        else {
+            container.innerHTML = 'Vous gagnez cette manche !';
+        } else if (botChoice === "ciseau") {
             computerScore++;
-            container.innerHTML += "L'ordinateur gagne cette manche !";
+            container.innerHTML = "L'ordinateur gagne cette manche !";
+        } else {
+            container.innerHTML = "Egalité !"
         }
     }
     //choice of player chisel
-    if (event === ciseau) {
-        if (botChoice === 1) {
+    if (player === "ciseau") {
+        if (botChoice === "feuille") {
             playerScore++;
-            container.innerHTML +='Vous gagnez cette manche !';
-        }
-        else {
+            container.innerHTML = 'Vous gagnez cette manche !';
+        } else if (botChoice === "pierre") {
             computerScore++;
-            container.innerHTML += "L'ordinateur gagne cette manche !";
+            container.innerHTML = "L'ordinateur gagne cette manche !";
+        } else {
+            container.innerHTML += "Egalité !"
         }
     }
+    playerScoreContainer.innerHTML = playerScore;
+    computerScoreContainer.innerHTML = computerScore;
 }
 
-container.innerHTML = winner;
+//event for the game
+pierre.addEventListener('click', function (){
+    playerChoice = "pierre";
+    botGame();
+    winner(playerChoice, computerChoice);
+});
+feuille.addEventListener('click', function (){
+    playerChoice = "feuille";
+    botGame();
+    winner(playerChoice, computerChoice);
+});
+ciseau.addEventListener('click', function (){
+    playerChoice = "ciseau";
+    botGame();
+    winner(playerChoice, computerChoice);
+});
