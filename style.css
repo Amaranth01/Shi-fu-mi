@@ -79,20 +79,9 @@ img {
     padding: 0.5rem;
 }
 
-#reset {
-    font-size: 1.5rem;
-    background-color: white;
-    border: #e0a87e 2px solid;
-}
-
 @media screen and (max-width: 420px) {
 
     #score {
-        font-size: 1.2rem;
-    }
-
-
-    #reset {
         font-size: 1.2rem;
     }
 
